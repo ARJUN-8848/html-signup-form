@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 400px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      border-color: #007bff;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    .form-footer {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .form-footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .form-footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Sign Up</h1>
+    <form action="/signup" method="post" onsubmit="return validateform()">
+      <input type="hidden" name="csrfmiddlewaretoken" value="QHhYabuHOeH3vzXz16fh]0jvwKVWe¡3kCEe5HX5dz¡mQWa">
+
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter Username" required>
+      </div>
+
+      <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="fname" required>
+      </div>
+
+      <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lname" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="pass1">Password</label>
+        <input type="password" id="pass1" name="pass1" required>
+      </div>
+
+      <div class="form-group">
+        <label for="pass2">Confirm Password</label>
+        <input type="password" id="pass2" name="pass2" required>
+      </div>
+
+      <input type="submit" value="Sign Up">
+    </form>
+
+    <div class="form-footer">
+      <p>Already a User? <a href="/login">Login</a></p>
+      <p><a href="/">Home</a></p>
+    </div>
+  </div>
+
+  <script>
+    function validateform() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("pass1").value;
+      var confirmPassword = document.getElementById("pass2").value;
+  
+      if (username === "") {
+        alert("Please fill out the form");
+        return false;
+      } else if (password.length < 6) {
+        alert("Password must be at least 6 characters long");
+        return false;
+      } else if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return false;
+      }
+      return true;
+    }
+  </script>
+  
+</body>
+</html>
